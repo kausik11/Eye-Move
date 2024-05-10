@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50vh;
+            width: 100vw;
+            background-color: #e1cd15;
+        }
+      body>p{
+        font-size: 58px;
+        font-weight: 700;
+        margin-top: 380px;
+      }
+        .container {
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 70px;
+            
+        }
+
+        .eyeBall {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border: 5px solid #333;
+            border-radius: 100% 0;
+            box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.3);
+            transform: rotate(45deg);
+            top: -10px;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .iris {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border: 5px solid #333;
+            background-color: #0077b6;
+            border-radius: 50%;
+            left: 40px;
+            top: 30px;
+        }
+
+        .iris::before {
+            content: '';
+            position: absolute;
+            background-color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            top: 22%;
+            left: 22%;
+        }
+
+        .iris::after {
+            content: '';
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.4);
+            width: 15px;
+            height: 15px;
+            top: 35%;
+            left: 65%;
+            border-radius: 50%;
+            box-shadow: -35px 20px rgba(255, 255, 255, 0.4);
+        }
+
+        .eyeLid1 {
+            position: absolute;
+            border-top: 5px solid #333;
+            border-left: 5px solid #333;
+            width: 150px;
+            height: 150px;
+            top: -30px;
+            left: 3px;
+            border-radius: 100% 0;
+            transform: rotate(45deg);
+            transition: .2s;
+            z-index: 10;
+        }
+        .eyeLid2 {
+            position: absolute;
+            border-top: 5px solid #333;
+            border-left: 5px solid #333;
+            width: 150px;
+            height: 150px;
+            top: -30px;
+            left: 230px;
+            border-radius: 100% 0;
+            transform: rotate(45deg);
+            transition: .2s;
+            z-index: 10;
+        }
+
+        .container:hover .eyeLid1 {
+            transform: rotate(-45deg) rotateX(160deg);
+            
+        }
+        .container:hover .mouth{
+            height: 0;
+            border-bottom: 5px solid black;
+        }
+        .container:hover .eyeLid2 {
+            transform: rotate(-45deg) rotateX(160deg);
+        }
+
+        .container:hover .lid1 {
+            transform: translateY(90px);
+        }
+        .container:hover .lid2 {
+            transform: translateY(90px);
+        }
+        .container:hover .iris{
+            transform: translateY(-100px);
+        }
+        .lid1{
+            position: absolute;
+            background-color: #e1cd15;
+            z-index: 9;
+            width: 295px;
+            height: 270px;
+            border-radius: 50%;
+            top: -248px;
+            left: 162px;
+            transition: .2s;
+        }
+        .lid2{
+            position: absolute;
+            background-color: #e1cd15;
+            z-index: 9;
+            width: 295px;
+            height: 270px;
+            border-radius: 50%;
+            top: -248px;
+            left: -68px;transition: .2s;
+        }
+        .mouth {
+    position: relative;
+    top: 200px;
+    left: -465px;
+    width: 400px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgb(219, 21, 21);
+    position: relative;
+    overflow: hidden;
+    transition: .2s;
+  }
+  /* .mouth::after {
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #fff;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  } */
+  .tongue {
+    position: absolute;
+    top: -130px;
+    width: 300px;
+    height: 200px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: white;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .container>p{
+    font-size: 48px;
+  }
+    </style>
+</head>
+
+<body>
+    <div class='container'>
+        <div class="eye">
+            <div class="eyeBall">
+                <div class='iris'></div>
+            </div>
+            <div class="eyeLid1"></div>
+            <div class="lid1"></div>
+        </div>
+        
+        <div class="eye">
+            <div class="eyeBall">
+                <div class='iris'></div>
+            </div>
+            <div class="eyeLid2"></div>
+            <div class="lid2"></div>
+        </div>
+        <div class="mouth">
+            <div class="tongue"></div>
+        </div>
+            </div>
+            <p>You are <span style="color: red;">watching...</span><br>
+                <iframe width="800" height="600" src="https://www.youtube.com/embed/ioeoCbDiMvE?si=QHHAM0EcNVkrB9UU" title="YouTube video player" frameborder="10"></iframe></p>
+</body>
+<script>
+ const eye = document.querySelectorAll('.iris');
+ console.log(eye);
+ window.addEventListener('mousemove',(e)=>{
+    const x = -(window.innerWidth / 2 - event.pageX) / 35;
+ const y = -(window.innerHeight / 2 - event.pageY) / 35;
+
+ eye.forEach((ele)=>{
+    ele.style.transform = `rotate(-45deg) translateY(${y}px) translateX(${x}px)`;  
+ })       
+        
+ })
+
+
+</script>
+
+</html>
